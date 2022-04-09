@@ -43,4 +43,4 @@ jobs:
           source: "youyangma_front/build/*"
           target: "/usr/share/nginx/html/youyangma"
           rm: true
-          strip_components: 1
+          strip_components: 2
