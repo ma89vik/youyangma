@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const Search = ({setCases}) => {
 
-    const [address, setAddress] = useState('碧波路690号')
+    const [address, setAddress] = useState('制造局路567')
     const search_url = 'https://fanmenrui.xyz/api/yang/'
 
     const handleAddressChange = (event) => {
@@ -15,9 +15,7 @@ const Search = ({setCases}) => {
 
     const searchCase = (event) => {
         event.preventDefault()
-        console.log('button clicked', event.target)
 
-        //const promise = axios.get(search_url + address)
         const promise = axios.get(search_url + address)
 
         promise.then(response => {

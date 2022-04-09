@@ -15,7 +15,7 @@ const Sheep = ({date, offset, delay_ms}) => {
             position: 'absolute',
             top: '75%',
             left: '50%',
-            marginTop: getRandomInt(-9, 0).toString() + '%',
+            marginTop: getRandomInt(-15, 0).toString() + '%',
             marginLeft:offset + '%',
         },
         img: {
@@ -58,9 +58,11 @@ const Sheep = ({date, offset, delay_ms}) => {
 
 
 const ShowCases = ({cases, background}) => {
+
     if (!cases) {
         return null
     }
+
 
     const styles = {
         background: {
@@ -74,10 +76,6 @@ const ShowCases = ({cases, background}) => {
     };
 
     const distributeSheeps = (cases) => {
-        cases.sort(function (a, b) {
-            return ('' + a.date.attr).localeCompare(b.date.attr);
-        })
-        cases.reverse();
 
         let sheeps = cases.map( e => {
             return {"date": e.date, "offset": null, "delay_ms": 0 };
