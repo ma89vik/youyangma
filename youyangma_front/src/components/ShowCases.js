@@ -10,21 +10,32 @@ function getRandomInt(min, max) {
 
 const Sheep = ({date}) => {
     const styles = {
-        width: "8em",
-        height: "8em",
-        position: 'absolute',
-        top: '75%',
-        left: '50%',
-        marginTop: getRandomInt(-3, 1).toString() + '%',
-        marginLeft:getRandomInt(-40, 40).toString() + '%',
-    }
+        imgBox: {
+            position: 'absolute',
+            top: '75%',
+            left: '50%',
+            marginTop: getRandomInt(-3, 1).toString() + '%',
+            marginLeft:getRandomInt(-40, 40).toString() + '%',
+        },
+        img: {
+            width: "14vw",
+            height: "14vw",
+        },
+        text: {
+            position: 'relative',
+            left: '-2vw',
+            top:'-9vw',
+            fontSize: '3vw',
+            transform: 'rotate(70deg)',
+            color: 'red'
+        }
+    };
 
-    console.log('place sheep at ' + styles.marginTop);
-    console.log('date ' + date);
 
     return (
-        <div>
-            <img src={sheepImage} style={styles} alt="this is sheep" />
+        <div style={styles.imgBox}>
+            <img src={sheepImage} style={styles.img} alt="this is sheep" />
+            <div style={styles.text}>{date}</div>
         </div>
     )
 };
