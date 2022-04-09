@@ -1,5 +1,4 @@
 
-import background from '../resources/background.png'
 import sheepImage from '../resources/sheep.png'
 import sheepSound from '../resources/sheep_sound.mp3'
 import { useState, useEffect } from 'react'
@@ -58,7 +57,7 @@ const Sheep = ({date, offset, delay_ms}) => {
 
 
 
-const ShowCases = ({cases}) => {
+const ShowCases = ({cases, background}) => {
     if (!cases) {
         return null
     }
