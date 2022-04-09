@@ -1,5 +1,4 @@
 
-import React, { useRef } from 'react'
 import background from '../resources/background.png'
 import sheepImage from '../resources/sheep.png'
 
@@ -25,7 +24,7 @@ const Sheep = ({date}) => {
 
     return (
         <div>
-            <img src={sheepImage} style={styles} alt="this is sheep image" />
+            <img src={sheepImage} style={styles} alt="this is sheep" />
         </div>
     )
 };
