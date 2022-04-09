@@ -17,16 +17,16 @@ const getData = async (url) => {
 
 const positive_cases = [
     {
-        date: "2022-04-08"
+        date: "04-08"
     },
     {
-        date: "2022-04-07"
+        date: "04-07"
     },
     {
-        date: "2022-04-06"
+        date: "04-06"
     },
     {
-        date: "2022-04-04"
+        date: "04-04"
     },
 ];
 
