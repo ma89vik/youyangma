@@ -46,7 +46,7 @@ const Sheep = ({date, offset, delay_ms}) => {
 
     useEffect( () => {
         setTimeout(showSheep, delay_ms);
-    }, [])
+    }, [delay_ms])
 
     return (
         <div style={styles.imgBox} hidden={hideSheep}>
