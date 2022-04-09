@@ -18,7 +18,7 @@ const Search = ({setCases}) => {
         console.log('button clicked', event.target)
 
         //const promise = axios.get(search_url + address)
-        const promise = axios.get(search_url)
+        const promise = axios.get(search_url + address)
 
         promise.then(response => {
           console.log(response)
