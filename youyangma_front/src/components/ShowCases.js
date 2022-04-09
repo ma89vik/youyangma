@@ -1,6 +1,8 @@
 
 import background from '../resources/background.png'
 import sheepImage from '../resources/sheep.png'
+import sheepSound from '../resources/sheep_sound.mp3'
+import { useState, useEffect } from 'react'
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -8,7 +10,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-const Sheep = ({date, offset}) => {
+const Sheep = ({date, offset, delay_ms}) => {
     const styles = {
         imgBox: {
             position: 'absolute',
@@ -31,9 +33,23 @@ const Sheep = ({date, offset}) => {
         }
     };
 
+    const [hideSheep, setHideSheep] = useState(true)
+
+
+    const showSheep = () => {
+        setHideSheep(false);
+        let audio = new Audio(sheepSound);
+        audio.play();
+    }
+
+    console.log("Set timeout "+ delay_ms);
+
+    useEffect( () => {
+        setTimeout(showSheep, delay_ms);
+    }, [])
 
     return (
-        <div style={styles.imgBox}>
+        <div style={styles.imgBox} hidden={hideSheep}>
             <img src={sheepImage} style={styles.img} alt="this is sheep" />
             <div style={styles.text}>{date}</div>
         </div>
@@ -43,6 +59,10 @@ const Sheep = ({date, offset}) => {
 
 
 const ShowCases = ({cases}) => {
+    if (!cases) {
+        return null
+    }
+
     const styles = {
         background: {
             backgroundImage: `url(${background})`,
@@ -61,15 +81,22 @@ const ShowCases = ({cases}) => {
         cases.reverse();
 
         let sheeps = cases.map( e => {
-            return {"date": e.date, "offset": null };
+            return {"date": e.date, "offset": null, "delay_ms": 0 };
         });
 
         let sheep_distance = 100 / sheeps.length;
         let offset = -45;
 
+        const max_delay = 5000;
+        let delay = 1000;
+        const delay_step = (max_delay -delay) / sheeps.length;
+
         sheeps.forEach(sheep => {
             sheep.offset = offset;
             offset = Math.max(Math.min(offset + sheep_distance + getRandomInt(-sheep_distance/2, sheep_distance/2), 34), -45);
+
+            sheep.delay_ms = delay
+            delay = delay + delay_step
         });
 
         return sheeps
@@ -80,7 +107,7 @@ const ShowCases = ({cases}) => {
     return (
         <div style={styles.background}>
             <div>
-                {sheeps.map(e => <Sheep date={e.date} offset={e.offset} key={e.date} />)}
+                {sheeps.map(e => <Sheep date={e.date} offset={e.offset} key={e.date} delay_ms={e.delay_ms} />)}
             </div>
 
         </div>
