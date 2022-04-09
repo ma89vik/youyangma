@@ -32,7 +32,7 @@ const positive_cases = [
 
 app.use(cors())
 
-app.get('/api/yang', (request, response) => {
+app.get('/yang', (request, response) => {
   response.json(positive_cases)
 })
 
