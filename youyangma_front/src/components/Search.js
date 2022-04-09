@@ -6,7 +6,7 @@ import axios from 'axios'
 const Search = ({setCases}) => {
 
     const [address, setAddress] = useState('碧波路690号')
-    const search_url = 'http://fanmenrui.xyz:3001/api/yang/'
+    const search_url = 'https://fanmenrui.xyz/api/yang/'
 
     const handleAddressChange = (event) => {
         console.log(event.target.value)
