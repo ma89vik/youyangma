@@ -25,7 +25,7 @@ const Sheep = ({date, offset, delay_ms}) => {
         text: {
             position: 'relative',
             left: '-3vw',
-            top:'-9.5vw',
+            top:'-10vw',
             fontSize: '3vw',
             transform: 'rotate(70deg)',
             color: 'red'

@@ -3,9 +3,11 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
+
 const Search = ({setCases}) => {
 
     const [address, setAddress] = useState('制造局路567')
+    const [noCases, setNoCases] = useState(false)
     const search_url = 'https://fanmenrui.xyz/api/yang/'
 
     const handleAddressChange = (event) => {
@@ -21,6 +23,10 @@ const Search = ({setCases}) => {
         promise.then(response => {
           console.log(response)
           setCases(response.data)
+
+          if (response.data.length === 0) {
+            setNoCases(true);
+          }
         })
 
 
@@ -34,6 +40,7 @@ const Search = ({setCases}) => {
                         onChange={handleAddressChange}/>
                 <button type="submit">查询</button>
             </form>
+            {noCases ? "无感染记录或未收录地址"  : ""  }
         </div>
     )
 }
