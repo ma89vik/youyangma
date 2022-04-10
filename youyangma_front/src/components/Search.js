@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const Search = ({setCases}) => {
 
-    const [address, setAddress] = useState('制造局路567')
+    const [address, setAddress] = useState('')
     const [noCases, setNoCases] = useState(false)
     const search_url = 'https://fanmenrui.xyz/api/yang/'
 
@@ -37,7 +37,8 @@ const Search = ({setCases}) => {
             <h2>输入查询地址</h2>
             <form onSubmit={searchCase}>
                 <input  value={address}
-                        onChange={handleAddressChange}/>
+                        onChange={handleAddressChange}
+                        placeholder='碧波路'/>
                 <button type="submit">查询</button>
             </form>
             {noCases ? "无感染记录或未收录地址"  : ""  }
