@@ -31,9 +31,15 @@ app.use(cors())
 
 app.get('/yang/:address', async (request, response) => {
   const address = request.params.address
-  const reply = await getData(encodeURI(infected_search_url + address));
-  const cases = await scrapeData(reply.data);
-  response.json(cases)
+  try {
+    const reply = await getData(encodeURI(infected_search_url + address));
+    const cases = await scrapeData(reply.data);
+    response.json(cases)
+  } catch (error) {
+    console.log(error.response); // this is the main part. Use the response property from the error object
+    return response.json(error.response);
+  }
+
 })
 
 const PORT = 3001
